@@ -175,6 +175,13 @@ function loadPath(path, funct) {
                 addContainerLog('<object type="application/pdf" style="width: inherit; height: inherit;" data="/files/Eric_Qian_e_Resume_latest.pdf"><iframe src = "/libs/ViewerJS/?zoom=page-width#../../files/Eric_Qian_e_Resume_latest.pdf" style="width: 100%; height: 100%" allowfullscreen webkitallowfullscreen></iframe></object>',e);
             }];
             break;
+        case "calendar":
+            // window.open("/files/Eric_Qian_e_Resume_latest.pdf");
+            location.hash = "calendar";
+            return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
+                addContainerLog('<link rel="stylesheet" href="/css/cli.css"><div class="calendly-inline-widget" data-url="https://node1.enumc.com/ericq" style="width: inherit; height: inherit;"></div><script>$.getScript("https://assets.calendly.com/assets/external/widget.js") .done(function (script, textStatus) { console.log("loaded calendar") }) .fail(function (jqxhr, settings, exception) { addContainerLog("<br><br><h5 class=\'cli-text\' style=\'color:white;\'> Loading calendar failed. Please use email button instead!</h5>"); });</script>', e);
+            }];
+            break;
         case "projects":
             // window.open("/files/Eric_Qian_e_Resume_latest.pdf");
             location.hash = "projects";
