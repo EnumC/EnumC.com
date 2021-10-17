@@ -176,14 +176,24 @@ function loadPath(path, funct) {
             }];
             break;
         case "calendar":
-            // window.open("/files/Eric_Qian_e_Resume_latest.pdf");
             location.hash = "calendar";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
                 addContainerLog('<link rel="stylesheet" href="/css/cli.css"><div class="calendly-inline-widget" data-url="https://node1.enumc.com/ericq" style="width: inherit; height: inherit;"></div><script>$.getScript("https://assets.calendly.com/assets/external/widget.js") .done(function (script, textStatus) { console.log("loaded calendar") }) .fail(function (jqxhr, settings, exception) { addContainerLog("<br><br><h5 class=\'cli-text\' style=\'color:white;\'> Loading calendar failed. Please use email button instead!</h5>"); });</script>', e);
             }];
             break;
+        case "calendar-30min":
+            location.hash = "calendar-30min";
+            return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
+                addContainerLog('<link rel="stylesheet" href="/css/cli.css"><div class="calendly-inline-widget" data-url="https://node1.enumc.com/ericq/30min" style="width: inherit; height: inherit;"></div><script>$.getScript("https://assets.calendly.com/assets/external/widget.js") .done(function (script, textStatus) { console.log("loaded calendar") }) .fail(function (jqxhr, settings, exception) { addContainerLog("<br><br><h5 class=\'cli-text\' style=\'color:white;\'> Loading calendar failed. Please use email button instead!</h5>"); });</script>', e);
+            }];
+            break;
+        case "calendar-60min":
+            location.hash = "calendar-60min";
+            return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
+                addContainerLog('<link rel="stylesheet" href="/css/cli.css"><div class="calendly-inline-widget" data-url="https://node1.enumc.com/ericq/60min" style="width: inherit; height: inherit;"></div><script>$.getScript("https://assets.calendly.com/assets/external/widget.js") .done(function (script, textStatus) { console.log("loaded calendar") }) .fail(function (jqxhr, settings, exception) { addContainerLog("<br><br><h5 class=\'cli-text\' style=\'color:white;\'> Loading calendar failed. Please use email button instead!</h5>"); });</script>', e);
+            }];
+            break;
         case "projects":
-            // window.open("/files/Eric_Qian_e_Resume_latest.pdf");
             location.hash = "projects";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
                 addContainerLog('<iframe src = "https://bananium.com/projects" style="width: inherit; height: 100%" allowfullscreen webkitallowfullscreen></iframe>', e);
