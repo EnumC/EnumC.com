@@ -261,6 +261,10 @@ function loadPath(path, funct) {
             window.location.href = "https://docs.google.com/presentation/d/1pdqVxWJnaJDy9C6Q-YviR7BNkuZZuA6Xg8iHD8pvxa8/edit?usp=sharing";
             location.hash = "coming-soon-tm";
             break;
+        case "hkn":
+            window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScgoYMjpqei9RvC79UsTB1JJmmJ7_I6kf2G1hfGVwVp8R9niA/viewform?usp=sf_link";
+            location.hash = "hkn";
+            break;
         case "400":
             validPath = false;
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/cli.html"), function (e) {
