@@ -222,7 +222,7 @@ function loadPath(path, funct) {
         case "top-secret-hash":
             location.hash = "top-secret-hash";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/cli.html"), function (e) {
-                typeText("You have gained access to a top secret database.", 25);
+                typeText("You have gained access to a top secret database.", e, 25);
                 addLog("<div class='cli-text'>There is a password hash hidden somewhere on this page.</div>",e);
                 addLog("<div class='cli-text'>If you are able to successfully decode it, a secret awaits!</div>",e);
                 addLog("<div class='cli-text'>programmers loves to use notepad in order to edit binary files, right? RIGHT?</div>",e);
@@ -232,11 +232,31 @@ function loadPath(path, funct) {
                 var targetDateInclusive = new Date('2020-10-15');
                 if (dateInPastArrow(targetDateInclusive, today)) {
                     addLog("<div class='cli-text'>the database is under maintainence! Quick, use this oppotunity to break through validation!</div>",e);
-                    commandHandler('login', '');
+                    commandHandler('login', '', directoriesAndFiles, e);
                 }
                 else {
                     addLog("<div class='cli-text'>Submission is disabled for " + new Date() + ". The IT department is on full alert today. Try again later.</div>",e);
                 }
+
+            }];
+            break;
+        case "nilay":
+            location.hash = "nilay";
+            return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/cli.html"), function (e) {
+                addLog("<div class='cli-text'>USER DETECTED.</div>",e);
+                
+                
+
+                setTimeout(function () {
+                    addLog("<div class='cli-text'><img src='https://i.imgur.com/B8ccGW9.jpg' referrerpolicy='no-referrer' style='height:25vh'></img></div>",e);
+                    setTimeout(function () {
+                        typeText("You have gained access to a top secret database.", e, 50);
+                        setTimeout(function () {
+                            commandHandler('login', '', directoriesAndFiles, e);
+                        }, 3000);
+                    }, 500);
+                }, 2000);
+                
 
             }];
             break;
