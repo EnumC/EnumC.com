@@ -148,12 +148,13 @@ function loadPath(path, funct) {
     switch (path) {
         case "":
             // $("#loaded-content").load("/html/menu.html", placeholderPrep);
-            location.hash = "cli";
-            path = "cli";
-            return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/cli.html"), function (e) {
-                initInitialLoadSequence(e);
-                hideLoading();
-            }];
+            // location.hash = "cli";
+            // path = "cli";
+            // return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/cli.html"), function (e) {
+            //     initInitialLoadSequence(e);
+            //     hideLoading();
+            // }];
+            
             break;
         case "menu":
             location.hash = "menu";

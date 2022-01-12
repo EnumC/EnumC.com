@@ -350,6 +350,9 @@ let maxOffset = 100;
 function createWindow(path, callback) {
 
     let newElem = loadPath(path);
+    if (newElem === undefined) {
+        return;
+    }
     let newWindow = $(newElem[0]).css("opacity", "0").appendTo($("#windows"));
     console.log(newWindow);
 
