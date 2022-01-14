@@ -98,12 +98,24 @@ function updateCommitDetails(callback) {
     });
 }
 
+/**
+ * Removes leading and trailing slashes
+ * @param {string} pathName The path to remove leading and trailing slashes from
+ * @return {string} The pathName without leading and trailing slashes
+ */
+ function trimSlashes(pathName) {
+    if (pathName[0] === '/') pathName = pathName.slice(1);
+    if (pathName.slice(-1) === '/') pathName = pathName.slice(-1);
+    return pathName;
+  }
 
 // On DOM ready.
 $(document).ready(function () {
     $('#wrapper').hide();
     $('.desktop').show();
-    createWindow(location.hash, function () {
+    let path = trimSlashes(window.location.pathname);
+    console.log("path: ", path);
+    createWindow(path, function () {
         let appbarWidth = $('.desktop').width();
         // $("#windows").css('left', appbarWidth);
     });

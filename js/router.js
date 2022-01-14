@@ -118,7 +118,7 @@ function initGUILoadSequence() {
 }
 
 function loadPath(path, funct) {
-    var origPath = location.hash;
+    var origPath = trimSlashes(window.location.pathname);
     var validPath = true;
     if (typeof path === "undefined") {
         console.warn("router: no object for path provided for loadPath(). Assuming path is empty.");
@@ -145,10 +145,10 @@ function loadPath(path, funct) {
         }
         
     }
+    history.pushState(null, "", path);
     switch (path) {
         case "":
             // $("#loaded-content").load("/html/menu.html", placeholderPrep);
-            // location.hash = "cli";
             // path = "cli";
             // return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/cli.html"), function (e) {
             //     initInitialLoadSequence(e);
@@ -157,57 +157,47 @@ function loadPath(path, funct) {
             
             break;
         case "menu":
-            location.hash = "menu";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/menu.html"), placeholderPrep];
             break;
         case "gui":
             // $("#loaded-content").load("/html/mobile.html", function (){});
             window.location.href = "/html/mobile.html";
-            location.hash = "gui";
             break;
         case "cli":
-            location.hash = "cli";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/cli.html"), funct];
             break;
         case "resume":
             // window.open("/files/Eric_Qian_e_Resume_latest.pdf");
-            location.hash = "resume";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
                 addContainerLog('<object type="application/pdf" style="width: inherit; height: inherit;" data="/files/Eric_Qian_e_Resume_latest.pdf"><iframe src = "/libs/ViewerJS/?zoom=page-width#../../files/Eric_Qian_e_Resume_latest.pdf" style="width: 100%; height: 100%" allowfullscreen webkitallowfullscreen></iframe></object>',e);
             }];
             break;
         case "calendar":
-            location.hash = "calendar";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
                 addContainerLog('<link rel="stylesheet" href="/css/cli.css"><div class="calendly-inline-widget" data-url="https://node1.enumc.com/ericq" style="width: inherit; height: inherit;"></div><script>$.getScript("https://assets.calendly.com/assets/external/widget.js") .done(function (script, textStatus) { console.log("loaded calendar") }) .fail(function (jqxhr, settings, exception) { addContainerLog("<br><br><h5 class=\'cli-text\' style=\'color:white;\'> Loading calendar failed. Please use email button instead!</h5>"); });</script>', e);
             }];
             break;
         case "calendar-30min":
-            location.hash = "calendar-30min";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
                 addContainerLog('<link rel="stylesheet" href="/css/cli.css"><div class="calendly-inline-widget" data-url="https://node1.enumc.com/ericq/30min" style="width: inherit; height: inherit;"></div><script>$.getScript("https://assets.calendly.com/assets/external/widget.js") .done(function (script, textStatus) { console.log("loaded calendar") }) .fail(function (jqxhr, settings, exception) { addContainerLog("<br><br><h5 class=\'cli-text\' style=\'color:white;\'> Loading calendar failed. Please use email button instead!</h5>"); });</script>', e);
             }];
             break;
         case "calendar-60min":
-            location.hash = "calendar-60min";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
                 addContainerLog('<link rel="stylesheet" href="/css/cli.css"><div class="calendly-inline-widget" data-url="https://node1.enumc.com/ericq/60min" style="width: inherit; height: inherit;"></div><script>$.getScript("https://assets.calendly.com/assets/external/widget.js") .done(function (script, textStatus) { console.log("loaded calendar") }) .fail(function (jqxhr, settings, exception) { addContainerLog("<br><br><h5 class=\'cli-text\' style=\'color:white;\'> Loading calendar failed. Please use email button instead!</h5>"); });</script>', e);
             }];
             break;
         case "projects":
-            location.hash = "projects";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
                 addContainerLog('<iframe src = "https://bananium.com/projects" style="width: inherit; height: 100%" allowfullscreen webkitallowfullscreen></iframe>', e);
             }];
             break;
         case "blog":
-            location.hash = "blog";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
                 addContainerLog('<iframe src = "https://blog.ericqian.me" style="width: inherit; height: 100%" allowfullscreen webkitallowfullscreen></iframe>', e);
             }];
             break;
         case "linkedin":
-            location.hash = "linkedin";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
                 addContainerLog('<iframe src = "https://www.linkedin.com/in/enumc" style="width: inherit; height: 100%" allowfullscreen webkitallowfullscreen></iframe>', e);
             }];
@@ -226,19 +216,16 @@ function loadPath(path, funct) {
             });
             break;
         case "dirTest":
-            location.hash = "cli";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/cli.html"), function (e) {
                 addLog("<div class='cli-text'>directory routing test successful.</div>",e);
             }];
             break;
         case "fileTest":
-            location.hash = "cli";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/cli.html"), function (e) {
                 addLog("<div class='cli-text'>file routing test successful.</div>",e);
             }];
             break;
         case "top-secret-hash":
-            location.hash = "top-secret-hash";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/cli.html"), function (e) {
                 typeText("You have gained access to a top secret database.", e, 25);
                 addLog("<div class='cli-text'>There is a password hash hidden somewhere on this page.</div>",e);
@@ -259,7 +246,6 @@ function loadPath(path, funct) {
             }];
             break;
         case "nilay":
-            location.hash = "nilay";
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/cli.html"), function (e) {
                 addLog("<div class='cli-text'>USER DETECTED.</div>",e);
                 
@@ -278,11 +264,9 @@ function loadPath(path, funct) {
             break;
         case "coming-soon-tm":
             window.location.href = "https://docs.google.com/presentation/d/1pdqVxWJnaJDy9C6Q-YviR7BNkuZZuA6Xg8iHD8pvxa8/edit?usp=sharing";
-            location.hash = "coming-soon-tm";
             break;
         case "hkn":
             window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScgoYMjpqei9RvC79UsTB1JJmmJ7_I6kf2G1hfGVwVp8R9niA/viewform?usp=sf_link";
-            location.hash = "hkn";
             break;
         case "400":
             validPath = false;
@@ -323,8 +307,8 @@ $(window).on('resize', function (e) {
             height = $(this).height(),
             aspRatio = width / height;
 
-        console.log("router: " + location.hash + " viewport resize. firing resize handler(s)");
-        switch (location.hash) {
+        console.log("router: " + trimSlashes(window.location.pathname) + " viewport resize. firing resize handler(s)");
+        switch (trimSlashes(window.location.pathname)) {
             case "#menu":
                 onMenuViewportChange();
                 break;
