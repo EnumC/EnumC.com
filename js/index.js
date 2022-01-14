@@ -32,6 +32,8 @@ let previousY = 0;
 
 let initialTop = 0;
 let initialLeft = 0;
+
+let preloadReadyRef = 0;
 window.onbeforeunload = function () {
     // Set position to top prior to refresh, since this is a 
     // single page application, and scroll should not persist
@@ -259,7 +261,16 @@ $(document).ready(function () {
 
     infoText = "This site is undergoing a complete redesign, and therefore might be very incomplete. Please see https://bananiumlabs.com for past content.";
     type(infoText, 25, 25, 50, 10);
+
+    preloadReadyRef = setInterval("checkPreloadingReady();",100)
 });
+
+function checkPreloadingReady(){
+    if(document.readyState=="complete" && jQuery.active === 0){
+        clearInterval(preloadReadyRef);
+        window.prerenderReady = true;
+    }
+}
 
 function drawLine(input) {
     points = calcWaypoints(input);
