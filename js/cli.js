@@ -723,16 +723,20 @@ function commandHandler(command, args, directoriesAndFiles, cliElm) {
     };
 }
 
-/* Initializes CLI and set up command, filesystem, and data. */
-function initCLI(cliElm) {
+function updateModifiedInfo(elm) {
     if (typeof lastAuthored != "string") {
         updateCommitDetails(function () {
-            $("#lastModElement").html($("#lastModElement").html() + lastAuthored);
+            addLog("<i>Last modified: </i>" + lastAuthored + "<br /><br />", elm);
         });
     }
     else {
-        $("#lastModElement").html($("#lastModElement").html() + lastAuthored);
+        addLog("<i>Last modified: </i>" + lastAuthored + "<br /><br />", elm);
     }
+}
+
+/* Initializes CLI and set up command, filesystem, and data. */
+function initCLI(cliElm) {
+    
 
     logContent.forEach(element => {
         addLog(element, cliElm);

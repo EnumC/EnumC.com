@@ -195,16 +195,16 @@ $(document).ready(function () {
             // prohibit selection if not on desktop.
             return false;
         }
-    }).on('start', evt => {
+    }).on('start', _evt => {
 
         // A selection got initiated, you could now clear the previous selection or
         // keep it if in case of multi-selection.
         // console.log('start', evt);
-    }).on('move', evt => {
+    }).on('move', _evt => {
 
         // Here you can update elements based on their state.
         // console.log('move', evt);
-    }).on('stop', evt => {
+    }).on('stop', _evt => {
 
         // The last event can be used to call functions like keepSelection() in case the user wants
         // to select multiple elements.
@@ -383,7 +383,19 @@ function createWindow(path, callback) {
         cancel: ".main-content", // Restrict dragging to title-bar only.
         scroll: false,
         zIndex: 10000,
-        start: zIndexHandler // Call z index handler to set new z axis.
+        // iframeFix: true,    // prevent iFrame capturing drag.
+        start: function(_event, _ui) {
+            // zIndexHandler(this); // Call z index handler to set new z axis.
+            zIndexHandler.call($(newWindow));
+            $(".main-content").each(function (_index, elm) {
+                var iframeFixElm = $('<div class="iframeFix" style="z-index:99;position:absolute;width:100%;top:0px;left:0px;height:' + $(elm).height() + 'px"></div>');
+                $(elm).append(iframeFixElm);});
+
+        },
+        stop: function () {
+            $('.iframeFix').remove();
+        }
+            
     });
     zIndexHandler.call($(newWindow));
     $(newWindow).click(zIndexHandler);
