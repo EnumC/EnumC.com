@@ -1,6 +1,6 @@
 /*
     Copyright (C) 2020 Eric Qian. 
-    <https://ericqian.me/>
+    <https://ericq.me/>
     All rights reserved.
 */
 
@@ -432,10 +432,10 @@ function createWindow(path, callback) {
                 path = "index";
             }
             if (currentDirectory == "/") {
-                $(newWindow).find("#path").text('C:\\ERICQIAN.ME\\' + path.toUpperCase() + ".HTML");
+                $(newWindow).find("#path").text('C:\\ericq.me\\' + path.toUpperCase() + ".HTML");
             }
             else {
-                $(newWindow).find("#path").text('C:\\ERICQIAN.ME\\' + currentDirectory + '\\' + path.toUpperCase() + ".HTML");
+                $(newWindow).find("#path").text('C:\\ericq.me\\' + currentDirectory + '\\' + path.toUpperCase() + ".HTML");
             }
 
             numWindows++;

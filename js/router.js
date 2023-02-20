@@ -1,6 +1,6 @@
 /*
     Copyright (C) 2020 Eric Qian.
-    <https://ericqian.me/>
+    <https://ericq.me/>
     All rights reserved.
 */
 
@@ -13,7 +13,7 @@ var devMode = false;
 // due to XSS concerns***
 console.debug("router: root domain - " + rootDomain);
 
-if (rootDomain == "ericqian.me") {
+if (rootDomain == "ericq.me") {
     mainDomain = true;
     console.debug("router: Loaded on main domain.")
 }
@@ -196,7 +196,7 @@ function loadPath(path, funct) {
             break;
         case "blog":
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
-                addContainerLog('<iframe src = "https://blog.ericqian.me" style="width: inherit; height: 100%" allowfullscreen webkitallowfullscreen></iframe>', e);
+                addContainerLog('<iframe src = "https://blog.ericq.me" style="width: inherit; height: 100%" allowfullscreen webkitallowfullscreen></iframe>', e);
             }];
             break;
         case "linkedin":

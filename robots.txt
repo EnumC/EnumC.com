@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://ericqian.me/sitemap.xml
+Sitemap: https://ericq.me/sitemap.xml

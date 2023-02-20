@@ -1,6 +1,6 @@
 /*
     Copyright (C) 2020 Eric Qian. 
-    <https://ericqian.me/>
+    <https://ericq.me/>
     All rights reserved. 
 */
 
@@ -220,13 +220,13 @@ function commandHandler(command, args, directoriesAndFiles, cliElm) {
                 console.log("currentDirectory changed to: " + currentDirectory);
                 // switch (currentDirectory) {
                 //     case "/":
-                //         $('#path').text('C:\\ERICQIAN.ME\\');
+                //         $('#path').text('C:\\ericq.me\\');
                 //         break;
                 //     case "~/":
-                //         $('#path').text('C:\\ERICQIAN.ME\\SYSTEM\\');
+                //         $('#path').text('C:\\ericq.me\\SYSTEM\\');
                 //         break;
                 //     default:
-                //         $('#path').text('C:\\ERICQIAN.ME\\' + currentDirectory + '\\');
+                //         $('#path').text('C:\\ericq.me\\' + currentDirectory + '\\');
                 // }
                 break;
             }

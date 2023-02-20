@@ -1,6 +1,6 @@
 /*  Welcome to the UI_Begin JS component.
     Copyright (C) 2020 Eric Qian. 
-    <https://ericqian.me/>
+    <https://ericq.me/>
     This component manages the startup 
     interface. 
 */
