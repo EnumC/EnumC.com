@@ -432,10 +432,10 @@ function createWindow(path, callback) {
                 path = "index";
             }
             if (currentDirectory == "/") {
-                $(newWindow).find("#path").text('C:\\ericq.me\\' + path.toUpperCase() + ".HTML");
+                $(newWindow).find("#path").text('C:\\ERICQ.ME\\' + path.toUpperCase() + ".HTML");
             }
             else {
-                $(newWindow).find("#path").text('C:\\ericq.me\\' + currentDirectory + '\\' + path.toUpperCase() + ".HTML");
+                $(newWindow).find("#path").text('C:\\ERICQ.ME\\' + currentDirectory + '\\' + path.toUpperCase() + ".HTML");
             }
 
             numWindows++;
