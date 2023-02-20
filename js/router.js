@@ -169,7 +169,7 @@ function loadPath(path, funct) {
         case "resume":
             // window.open("/files/Eric_Qian_e_Resume_latest.pdf");
             return [$("<div style='width: 100 %; height: auto;'></div>").load("/html/general.html"), function (e) {
-                addContainerLog('<object type="application/pdf" style="width: inherit; height: inherit;" data="/files/Eric_Qian_e_Resume_latest.pdf"><iframe src = "/libs/ViewerJS/?zoom=page-width#../../files/Eric_Qian_e_Resume_latest.pdf" style="width: 100%; height: 100%" allowfullscreen webkitallowfullscreen></iframe></object>',e);
+                addContainerLog('<object type="application/pdf" style="width: inherit; height: inherit;" data="/files/Eric_Qian_cs_Resume_latest.pdf"><iframe src = "/libs/ViewerJS/?zoom=page-width#../../files/Eric_Qian_cs_Resume_latest.pdf" style="width: 100%; height: 100%" allowfullscreen webkitallowfullscreen></iframe></object>',e);
             }];
             break;
         case "calendar":
